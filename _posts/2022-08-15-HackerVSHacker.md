@@ -2,7 +2,7 @@
 title: "Tryhackme Hacker Vs Hacker writeup"
 date: 2022-08-15 20:00:00 
 layout: post
-categories: Try-Hack-Me
+categories: THM
 tags: [THM]
 toc: true
 ---
