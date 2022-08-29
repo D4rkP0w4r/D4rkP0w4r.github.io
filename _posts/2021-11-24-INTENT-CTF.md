@@ -18,17 +18,17 @@ If you are a l33t h4x0r, please upload your resume.
 
 ## Solution
 * Overview challenge provided a main page and `careers.php` page  
-![Main function](Careers/1.PNG)
+![image](https://user-images.githubusercontent.com/79050415/147570246-8642d9e2-ba12-439d-bd05-3a71d72cbffc.png)
 * I think website can upload reverse shell but i read details a title only accepted `zip format` =)))) 
-![Main function](Careers/2.PNG)
+![image](https://user-images.githubusercontent.com/79050415/147570289-7cba2951-bdeb-4423-b16d-38ad82b3fb7a.png)
 * So i create a payload zip file and upload to website 
-![Main function](Careers/3.PNG)
+![image](https://user-images.githubusercontent.com/79050415/147570325-3168681a-4e7a-46e7-bd4c-88520ce83667.png)
 * after upload it's generated a `ID`
-![Main function](Careers/4.PNG)
+![image](https://user-images.githubusercontent.com/79050415/147570395-a34bf2bc-62c7-418d-8efe-7e8fb8ab83c7.png)
 * And i clicked to `ID` it's show `zip.txt`
-![Main function](Careers/6.PNG)
+![image](https://user-images.githubusercontent.com/79050415/147570436-69db32a5-dec7-446f-8856-83a6e49857bd.png)
 * and now i used curl command to get flag =)))
-![Main function](Careers/5.PNG)
+![](https://i.imgur.com/NUxXdpd.png)
 * FLAG `INTENT{zipfiles_are_awsome_for_pt}`
 ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -37,7 +37,7 @@ If you are a l33t h4x0r, please upload your resume.
 * Technique: LFI - Local File Inclusion, Path Traversal
 * Description: Our spy managed to steal the source code for the Etulosba CDN. We need your help to get the flag from that server.
 ## Solution
-![Main function](Etulosba/15.PNG)
+![](https://i.imgur.com/QZAFrX2.png)
 ## Source Code Analysis
 * The challenge included source code `main.js`
 
@@ -106,13 +106,13 @@ fs.writeFileSync(path.join("/tmp", process.env.FLAG_NAME), process.env.FLAG);
 
 ### Attack
 * I used Burp Suite send request + '/flag.name'  with GET medthod and server response `Cannot GET /flag.name` =))))
- ![Main function](Etulosba/12.PNG)
+ ![](https://i.imgur.com/SvW7TGd.png)
  
 * I try `Path Traversal` vulnerability with url encoded payload `files/images/..%2f..%2fflag.name` and server response file name `imaflagimaflag` i think it contain flag =))) , nice ^_^
- ![Main function](Etulosba/13.PNG)
+ ![](https://i.imgur.com/UmTduFp.png)
  
  * `/files/binary/:name` is endpoint because `path.resolve` only accepted if you send absolute path let's get flag i send payload `/files/binary/%2ftmp%2fimaflagimaflag` and server reponse flag =)))
-  ![Main function](Etulosba/14.PNG)
+   ![](https://i.imgur.com/DyYsoJ0.png)
   * FLAG `INTENT{absolutely_great_job_with_the_absolute_path}`
  
  ----------------------------------------------------------------------------------------------------------------------------------
@@ -123,18 +123,18 @@ fs.writeFileSync(path.join("/tmp", process.env.FLAG_NAME), process.env.FLAG);
 * Description: We know the flag is on the Mass Notes servers, can you get it for us?
 # Solution
 * Over view the challenge have a note you can input everything you want, first look i think trigger xss but no :))
-![Main function](MassNotes/6.PNG)
+![](https://i.imgur.com/KCXBDfW.png)
 * I `Ctrl + u` view page source 
-![Main function](MassNotes/11.PNG)
+![](https://i.imgur.com/Ur5K5CB.png)
 * `img.src = "/avatar/" + note._id + ".png";` server create image `png` with `node._id` from note you created,  `/avatar/`is a path + `.png`
 ### Attack
 * I input some contents in note and submit, server response encoded in JSON in the browser url bar 
-![Main function](MassNotes/7.PNG)
+![](https://i.imgur.com/cZdyRuY.png)
 ```text
 https://mass-notes.chal.intentsummit.org/note.html?note=%7B%22title%22%3A%22hacked%20by%20d4rkp0w4r%22%2C%22content%22%3A%22haha%22%2C%22avatar%22%3A%22default_1.png%22%2C%22_id%22%3A%226197afd9ccfc2f0f0fa4e9e5%22%2C%22__v%22%3A0%7D
 ```
 * I conducted decode url 
-![Main function](MassNotes/8.PNG)
+![](https://i.imgur.com/Yxu3jt0.png)
 ```text
 https://mass-notes.chal.intentsummit.org/note.html?note={"title":"hacked by d4rkp0w4r","content":"haha","avatar":"default_1.png","_id":"6197afd9ccfc2f0f0fa4e9e5","__v":0}
 ```
@@ -145,9 +145,9 @@ Error: ENOENT: no such file or directory, open '/app/avatars/default_1.png'
 ```
 * The error show try open file name `default_1.png` and didn't found it. default path is /app/avatars so i need to get up two levels in path traversal.
 * I used Burp Suite catch a request and insert `../../flag` into `"avatar":"../../flag"` , server response new id 
-![Main function](MassNotes/9.PNG)
+![](https://i.imgur.com/5uSM0nd.png)
 * I used curl again with new `id.png` and i have a flag ^_^
-![Main function](MassNotes/10.PNG)
+![](https://i.imgur.com/GrGiI3b.png)
 * FLAG `INTENT{d0nt_mass_with_ap1s}`
 
  ----------------------------------------------------------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ Error: ENOENT: no such file or directory, open '/app/avatars/default_1.png'
 Can you find the weak link?
 # Solution
 In this challenge include main page and attachment `ha.cfg`
-![Main function](Door(un)Locked/1.PNG)
+![](https://i.imgur.com/MXLEdoj.jpg)
 ```c
 global
     daemon
@@ -190,12 +190,12 @@ Then i searching about attachment `ha.cfg` and i realized that is an `haproxy co
  * We can guess that the flag is hidden behind the /flag endpoint.
  ### Attack
  I used <https://regex101.com/> that explains the regex meaning 
- ![Main function](Door(un)Locked/3.PNG)
+![](https://i.imgur.com/0YIPorU.png)
  * Anything with word `flag` inside url will be blocked, even if we send a urlencoded payload, since it decodes before matching but used regex101 it's piece of cake
- ![Main function](Door(un)Locked/5.PNG)
+![](https://i.imgur.com/0U9p6DL.png)
  * Well, `.` matches any character let's bypass ^_^
  * I used Burp Suite send a payload `/./%0a/../flag` with `Get` method and server response flag :^)
- ![Main function](Door(un)Locked/4.PNG)
+![](https://i.imgur.com/0U9p6DL.png)
 * FLAG `INTENT{Smuggl3_w1th_H4_Pr0xy}`
  ----------------------------------------------------------------------------------------------------------------------------------
  
@@ -208,12 +208,12 @@ How didn't you approve my beautiful innovative page on your "precious" CTF?!
 It's all done, maybe I can just add some graphics.
 # Solution
 * In this challenge only main page 
-![Main function](GraphiCS/16.PNG)
+![](https://i.imgur.com/ZAS3dnr.png)
 * While i searching techniques about GraphQL i found a blog <https://book.hacktricks.xyz/pentesting/pentesting-web/graphql> explained a how to exploit GraphQL 
 * My target found a endpoint of web i use `dirsearch` found endpoint 
-![Main function](GraphiCS/17.PNG)
+![](https://i.imgur.com/XM7WGtD.png)
 * Well, I found endpoint of web `https://graphics.chal.intentsummit.org/api/v1/`
-![Main function](GraphiCS/18.PNG)
+![](https://i.imgur.com/Li8L9wQ.png)
 * I used tool for get a payload
 ```text
 {"operationName":"ExampleQuery","variables":{},"query":"query ExampleQuery { _secret { flag } }\n"}
