@@ -1,5 +1,5 @@
 ---
-title: INTENT CTF 2021
+title: PHP Deserialization Injection
 date: 2021-12-24 20:00:00 
 layout: post
 categories: CTF
