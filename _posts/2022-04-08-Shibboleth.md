@@ -2,7 +2,7 @@
 title: "Hackthebox Shibboleth Writeup"
 date: 2022-04-08 20:00:00 
 layout: post
-categories: Hack The Box
+categories: Hack-The-Box
 tags: [HTB]
 toc: true
 ---
