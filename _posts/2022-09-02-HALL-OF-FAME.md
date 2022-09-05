@@ -1,5 +1,5 @@
 ---
-title: INFORMATION SECCURITY HALL OF FAME
+title: INFORMATION SECURITY HALL OF FAME
 date: 2022-09-02 08:00:00 
 layout: post
 categories: HOF
