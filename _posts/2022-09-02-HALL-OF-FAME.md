@@ -14,3 +14,7 @@ toc: true
 **CERT-EU Information Security Hall of Fame 2022** 🌟🥳
 
 ![cert_eu_hof](https://user-images.githubusercontent.com/79050415/188348945-a6869d37-7680-49d3-bdae-a6a24929e20b.png)
+
+**Avans Hogeschool Information Security Hall of Fame 2022** 🌟🥳
+
+![image](https://user-images.githubusercontent.com/79050415/191164688-2e4f685e-adf3-4ba4-9df4-ecc272edbc46.png)
